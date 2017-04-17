@@ -1,0 +1,84 @@
+<<echo=FALSE, results=hide>>=
+
+my.seed <- sample(1:100,1)
+set.seed(my.seed)
+x <- sample(-5:5, size = 500, replace = TRUE)
+
+tmpFn <- function(x) {
+  
+  out <- (x<0)*(x^2 + 2*x+3) + 
+         ( (x>=0)&(x<2))*(x+3) + 
+         (x>=2)*(x^2 + 4*x - 7)
+  
+  return(out)
+}
+
+y <- tmpFn(x)
+
+if (lan == 'en') {
+  question.1 <- paste0('Consider the following function:')
+  question.2 <- paste0('Write a function called \\lstinline|tmpFn| that takes as argument a numeric vector called $x$. Such a function must return as output the values of $f(x)$. Use the function for the following vector (my.seed=',my.seed, '):\\n')
+  question.3 <- paste0('What is the sum of f(x)? TIP: Use logical vectors.')
+}
+
+if (lan == 'pt-br') {
+  
+  question.1 <- paste0('Considere a seguinte função:')
+  question.2 <- paste0('Escreva uma função chamada \\lstinline|tmpFn| que tem como argumento um vetor numérico chamado $x$. Tal função deve retornar como output os valores de $f(x)$. Utilize a função criada para o seguinte vetor (my.seed=',my.seed, '):')
+  question.3 <- paste0('Qual o valor da soma de f(x)? DICA: Utilize vetores lógicos.')
+}
+
+sol.q <-sum(y)
+
+my.answers <- floor(sol.q*gen.rnd.vec())
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+\begin{eqnarray}
+f(x) &= x^2 + 2x + 3 	\quad x<0 \\ 
+f(x) &= x+ 3 			    \quad 0 \leq x < 2 \\
+f(x) &= x^2 + 4x -7 	\quad x \geq 2 
+\end{eqnarray}
+
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+<<>>=
+set.seed(my.seed)
+x <- sample(-5:5, size = 500, replace = TRUE)
+@
+
+
+<<echo=False, results=tex>>=
+cat(paste(question.3,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers,markup = 'latex')
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

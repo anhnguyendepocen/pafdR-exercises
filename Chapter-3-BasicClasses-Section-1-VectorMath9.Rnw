@@ -1,0 +1,75 @@
+<<echo=FALSE, results=hide>>=
+N=10
+P <- 10 + cumsum(rnorm(N, sd = 0.5) )
+
+df.to.print <- data.frame(ref.date = Sys.Date()+1:N, 
+                          P = format(P, digits = 2))
+
+P = as.numeric(format(P, digits = 2))
+
+R <- P[2:length(P)]/P[1:(length(P)-1)] -1
+
+sol.q <- sum(R)
+
+if (lan == 'en') {
+    question.1 <- paste0('On of the most basic operations in finance is to calculate returns from a vector of prices. Returns are just the percentage difference of price from one period to the next.:')
+  question.2 <- paste0('Consider a vector of price as:')
+  question.3 <- paste0('Based on P and the previous equation, calculate the vetor of returns. Qual is the total sum of returns?')
+}
+
+if (lan == 'pt-br') {
+  
+  question.1 <- paste0('Uma das formulas mais básicas em finanças é o cálculo de retornos. Este nada mais é que a diferença percentual do preço entre um período e outro:')
+  question.2 <- paste0('Considere um vetor de preço como:')
+  question.3 <- paste0('Com base no vetor de preços, calcule o vetor de retornos utilizando a equação anterior. Qual é a soma do vetor de retornos?')
+}
+
+my.answers <- sol.q*gen.rnd.vec()
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+\begin{equation}
+R _t = \frac{P_t}{P_{t-1}} -1 
+\end{equation}
+
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+<<echo=FALSE, results=verbatim>>=
+print(df.to.print, row.names = FALSE)
+@
+
+
+<<echo=False, results=tex>>=
+cat(paste(question.3,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers,markup = 'latex')
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

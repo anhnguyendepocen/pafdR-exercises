@@ -1,16 +1,4 @@
 <<echo=FALSE, results=hide>>=
-# function for generating random answers
-gen.rnd.vec <- function(){
-  rnd.vec.1 <- c(1, seq(runif(1,0.1,0.2), runif(1,0.7,0.8), length.out = 4))
-  rnd.vec.2 <- c(1, seq(runif(1,1.1,1.2), runif(1,1.7, 1.8), length.out = 4))
-  rnd.vec.3 <- c(1, seq(runif(1,0.25,0.5),runif(1,0.6,0.8), length.out = 2),
-                 seq(runif(1,1.2,2), length.out = 2))
-
-  rnd.l <- list(rnd.vec.1, rnd.vec.2, rnd.vec.3)
-  rnd.vec <- sample(rnd.l,1)[[1]]
-  return(rnd.vec)
-}
-
 my.fct <- ls('package:base')
 
 #remove fct with funky names
@@ -38,13 +26,9 @@ cat(paste(question,collapse = ""))
 @
 
 
-\begin{answerlist}
-\item \Sexpr{my.answers[1]}
-\item \Sexpr{my.answers[2]}
-\item \Sexpr{my.answers[3]}
-\item \Sexpr{my.answers[4]}
-\item \Sexpr{my.answers[5]}
-\end{answerlist}
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
 
 \end{question}
 

@@ -1,0 +1,62 @@
+<<echo=FALSE, results=hide>>=
+
+my.seed <- sample(1:100,1)
+
+if (lan == 'en') {
+  question.1 <- 'A student executed the following R code:'
+  question.2 <- paste0('If my.seed=',my.seed,', what is the content of object \\verb|x|?')
+  
+}
+
+if (lan == 'pt-br') {
+  question.1 <- 'Um estudante executou o seguinte código do R:'
+  question.2 <- paste0('Se my.seed=',my.seed,', qual é o conteúdo do object \\verb|x|?')
+}
+
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+
+<<>>=
+set.seed(my.seed)
+y <- sample(1:10, 3)
+y <- y[c(1,3)]
+x <- y[2]
+@
+
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+\begin{answerlist}
+\item \Sexpr{x}
+\item \Sexpr{'NA'}
+\item \Sexpr{y[1]}
+\item \Sexpr{y[2]+3}
+\item \Sexpr{x+1}
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

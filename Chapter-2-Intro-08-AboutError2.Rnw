@@ -15,15 +15,15 @@ if (lan == 'pt-br') {
 
 \begin{question}
 
-<<echo=False, results=tex>>=
+<<echo=FALSE, results=tex>>=
 cat(paste(question.1,collapse = ""))
 @
 
-<<eval=FALSE>>=
+<<eval=TRUE>>=
 my.vec <- runif(100)
 @
 
-<<echo=False, results=tex>>=
+<<echo=FALSE, results=tex>>=
 cat(paste(question.2,collapse = ""))
 @
 

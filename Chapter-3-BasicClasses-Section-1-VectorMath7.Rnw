@@ -1,0 +1,64 @@
+<<echo=FALSE, results=hide>>=
+
+my.N.1 <- sample(10:50,1)
+my.N.2 <- sample(10:50,1)
+
+my.grid <- expand.grid(i=1:my.N.1, j= 1:my.N.2)
+
+z <- sum( (my.grid$i^4)/(3+my.grid$i*my.grid$j) )
+
+if (lan == 'en') {
+  question.1 <- paste0('Using function  \\verb|expand.grid| to create all combination of two vector, create the following object in R:')
+  question.2 <- paste0('What is the value of $z$?')
+}
+
+if (lan == 'pt-br') {
+  
+  question.1 <- paste0('Utilizando a função \\verb|expand.grid| para criar todas combinações entre dois vetores, crie o seguinte objeto no R:')
+  question.2 <- paste0('Qual o valor de $z$?')
+}
+
+sol.q <-z
+
+my.answers <- sol.q*gen.rnd.vec()
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+\begin{equation}
+z  = \sum_{i=1}^{\Sexpr{my.N.1}} \sum_{j=1}^{\Sexpr{my.N.2}} \frac{i^4}{3+ij}
+\end{equation}
+	
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers,markup = 'latex')
+@
+
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

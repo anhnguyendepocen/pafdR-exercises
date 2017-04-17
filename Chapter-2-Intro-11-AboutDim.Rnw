@@ -14,14 +14,14 @@ my.answers[3:5] <- paste(dim(x)[1]+sample(1:10,3),
 
 if (lan == 'en') {
   question.1 <- 'Consider the creation of the following matrix M:'
-  question.2 <- 'If we executed in R the commands \\verb|size(x)[1]|, \\verb|ncol(x)| and \\verb|length(x)| in that exact order, what would be the result?'
+  question.2 <- 'If we executed in R the commands \\verb|dim(x)[1]|, \\verb|ncol(x)| and \\verb|length(x)| in that exact order, what would be the result?'
   
 }
 
 if (lan == 'pt-br') {
   
   question.1 <- 'Considere a criação da seguinte matriz M:'
-  question.2 <- 'Caso executássemos os comandos  \\verb|size(x)[1]|, \\verb|ncol(x)| e \\verb|length(x)|, nessa mesma ordem, qual seria o resultado?'
+  question.2 <- 'Caso executássemos os comandos  \\verb|dim(x)[1]|, \\verb|ncol(x)| e \\verb|length(x)|, nessa mesma ordem, qual seria o resultado?'
 }
 
 

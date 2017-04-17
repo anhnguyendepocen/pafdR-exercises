@@ -1,0 +1,68 @@
+<<echo=FALSE, results=hide>>=
+
+my.n <- sample(50:1000,1)
+
+x <- 1:my.n
+y <- my.n:1
+
+z <- (y[3:my.n]-x[2:(my.n-1)])/y[1:(my.n-2)]
+
+if (lan == 'en') {
+  question.1 <- paste0('Create a vector named $z_i$ that follows the equation given next, where $x_i=1...',my.n,'$ and $y_i=',my.n,'...1$:')
+  
+  question.2 <- 'What is the sum of the elements of $z_i$?'
+}
+
+if (lan == 'pt-br') {
+  
+  question.1 <- paste0('Crie um vetor $z_i$ de acordo com a seguinte fórmula onde $x_i=1...',my.n,'$ e $y_i=',my.n,'...1$:')
+  
+  question.2 <- 'Qual é o valor da soma dos elementos de $z_i$?'
+  
+}
+
+sol.q <- sum(z)
+
+my.answers <- sol.q*gen.rnd.vec()
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+
+\begin{equation}
+z_i=\frac{y_i-x_{i-1}}{y_{i-2}}
+\end{equation}
+	
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers,markup = 'latex')
+@
+
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

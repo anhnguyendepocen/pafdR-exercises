@@ -10,25 +10,28 @@ possible.repo <- c('https://cloud.r-project.org/',
                   'https://mirrors.cicku.me/CRAN/',
                   'https://cran.ism.ac.jp/')
 
+# the only one without giving error
+possible.repo <- c('https://cloud.r-project.org/')
+                   
 my.repo <- sample(possible.repo,1)
-#n.pkgs <- nrow(available.packages(repos = my.repo))
+n.pkgs <- nrow(available.packages(repos = my.repo))
 
-n.pkgs <- 10000
+#n.pkgs <- 10000
 sol.q <- n.pkgs
-rnd.vec <- c(0, sample(-9000:-100,4))
+rnd.vec <- floor(sol.q*gen.rnd.vec())[2:5]
 
 
 if (lan == 'en') {
   question.1 <- paste0('How many packages you can find today (',Sys.Date(),') in CRAN? Use the repository in ',my.repo,' for your answer.')
   
-  my.answers <- paste0(sol.q + rnd.vec, ' packages')
+  my.answers <- paste0(floor(sol.q*gen.rnd.vec()), ' packages')
 
 }
 
 if (lan == 'pt-br') {
   question.1 <- paste0('Quantos pacotes existem hoje (',Sys.Date(),') no CRAN? Use o repositório em ',my.repo,' para a sua resposta.')
   
-  my.answers <- paste0(sol.q + rnd.vec, ' pacotes')
+  my.answers <- paste0(floor(sol.q*gen.rnd.vec()), ' pacotes')
 
 }
 
